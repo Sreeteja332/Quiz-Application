@@ -7,12 +7,12 @@ import javax.swing.*;
 
 public class Login extends JFrame{
 
-    JButton start, back;
+    JButton start, back;//Without global declaration, these components wouldn't be accessible in the listener methods if we declared these 2 locally These would only be accessible within the constructor ActionListeners wouldn't be able to access them
 
     Login() {
 
-        getContentPane().setBackground(Color.WHITE);
-        setLayout(null);
+        getContentPane().setBackground(Color.WHITE); //setting the BG color of Frame
+        setLayout(null); // null so that we can create our own layout
 
         JLabel title = new JLabel("Welcome to Quiz Application");
         title.setBounds(250, 60, 700, 30);
@@ -35,7 +35,7 @@ public class Login extends JFrame{
         JLabel rules = new JLabel();
         rules.setBounds(40, 130, 700, 300);
         rules.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        rules.setText(
+        rules.setText( //setting text we can use this method in Jlabel class
                 "<html>"+
                         "1. Total Quiz Time is 5 minutes." + "<br><br>" +
                         "2. Each Question carries 1 mark, No negative marking." + "<br><br>" +
@@ -52,8 +52,8 @@ public class Login extends JFrame{
         back.setBounds(20,400,80,25);
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                new Home();
+                setVisible(false); //closing login frame
+                new Home();//creating home class object. u can create in Home h = new Home but here we are not storing it in any variable.
             }
         });
         add(back);
@@ -62,8 +62,8 @@ public class Login extends JFrame{
         start.setBounds(200,400,80,25);
         start.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                new Quiz();
+                setVisible(false); //closing the frame of Login
+                new Quiz(); //creating Quiz class object. u can create in Quiz h = new Quiz but here we are not storing it in any variable.
             }
         });
         add(start);
@@ -76,6 +76,6 @@ public class Login extends JFrame{
 
 
     public static void main(String[] args) {
-        new Login();
+        new Login();//creating Login class object. u can create in Login h = new Login but here we are not storing it in any variable.
     }
 }

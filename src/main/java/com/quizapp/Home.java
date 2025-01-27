@@ -7,18 +7,18 @@ import java.awt.event.ActionListener;
 
 public class Home extends JFrame{
 
-    JTextField tfname,tfempid;
-    JButton login, close;
+    JTextField tfname,tfempid; //Without global declaration, these components wouldn't be accessible in the listener methods
+    JButton login, close; // if we declared these 4 locally These would only be accessible within the constructor ActionListeners wouldn't be able to access them
 
     Home() {
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
         JLabel heading = new JLabel("Quiz App");
-        heading.setBounds(200, 60, 100, 40);
-        heading.setFont(new Font("Arial", Font.BOLD, 20));
-        heading.setForeground(Color.DARK_GRAY);
-        add(heading);
+        heading.setBounds(200, 60, 100, 40); // setting the location
+        heading.setFont(new Font("Arial", Font.BOLD, 20)); //font
+        heading.setForeground(Color.DARK_GRAY); //font colour
+        add(heading); // use this method to display this heading in Jframe
 
         JLabel name = new JLabel("Enter your name");
         name.setBounds(175, 140, 300, 20);
@@ -29,9 +29,11 @@ public class Home extends JFrame{
         tfname = new JTextField();
         tfname.setBounds(175, 160, 180, 25);
         tfname.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-        tfname.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                tfempid.requestFocusInWindow();
+        tfname.addActionListener(new ActionListener() // Adds the specified action listener to receive action events from this textfield. comes from action listener package it contains a functional interface with action performed unimplemented method.
+        {
+            public void actionPerformed(ActionEvent e) // implementing that method.
+            {
+                tfempid.requestFocusInWindow(); // this will bring focus to the block when we click enter.
             }
         });
         add(tfname);
@@ -45,8 +47,16 @@ public class Home extends JFrame{
         tfempid = new JTextField();
         tfempid.setBounds(175, 220, 180, 25);
         tfempid.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-        tfempid.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        tfempid.addActionListener(new ActionListener() //here we are creating anonymous  new ActionListner creates a new instance of a class that implements ActionListener
+//        class Home implements ActionListener {
+//            public void actionPerformed(ActionEvent e) {
+//                login.requestFocusInWindow();
+//            }
+//        }
+//        tfempid.addActionListener(new MyListener());  both are same
+        {
+            public void actionPerformed(ActionEvent e)
+            {
                 login.requestFocusInWindow();
             }
         });
@@ -56,7 +66,7 @@ public class Home extends JFrame{
         login.setBounds(175,260,80,25);
         login.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                openLogin();
+                openLogin(); // here it will call this method.
             }
         });
         add(login);
@@ -65,22 +75,22 @@ public class Home extends JFrame{
         close.setBounds(275,260,80,25);
         close.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                setVisible(false); //this will close the frame.
             }
         });
         add(close);
 
-        setSize(500, 500);
-        setLocation(350, 250);
+        setSize(500, 500); //setting the size of Frame
+        setLocation(350, 250); // Location where it should open
         setVisible(true);
     }
 
     public void openLogin(){
-        setVisible(false);
-        new Login();
+        setVisible(false); // closing the frame
+        new Login();//creating Login class object. u can create in Login h = new Login but here we are not storing it in any variable.
     }
 
     public static void main(String[] args) {
-        new Home();
+        new Home(); //creating home class object. u can create in Home h = new Home but here we are not storing it in any variable.
     }
 }

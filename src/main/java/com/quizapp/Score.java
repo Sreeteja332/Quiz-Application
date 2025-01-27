@@ -7,7 +7,8 @@ import java.awt.event.ActionListener;
 
 public class Score extends JFrame{
 
-    Score(int score) {
+    Score(int score)
+    {
         setSize(400, 400);
         setLocation(800, 250);
         setLayout(null);
@@ -18,7 +19,7 @@ public class Score extends JFrame{
         heading.setFont(new Font("Tahoma", Font.BOLD, 26));
         add(heading);
 
-        JLabel result = new JLabel("Your score is: " + score);
+        JLabel result = new JLabel("Your score is: " + score); // displaying score that came from quiz class
         result.setBounds(100, 150, 700, 30);
         result.setFont(new Font("Tahoma", Font.BOLD, 26));
         add(result);
@@ -28,7 +29,7 @@ public class Score extends JFrame{
         submit.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new Login();
+                new Login(); // //creating Login class object. u can create in Login h = new Login but here we are not storing it in any variable.
             }
         });
 
@@ -39,6 +40,7 @@ public class Score extends JFrame{
 
 
     public static void main(String[] args) {
-        new Score(0);
+
+        new Score(0);//creating Score class object. u can create in Score h = new Score but here we are not storing it in any variable.
     }
 }
